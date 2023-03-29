@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        
+        h3{
+            text-align: center;
+        }
+    .selection{
+        display: flex;
+        justify-content: space-around;
+        
+       
+    }
+     .from,.to{
+        margin-top: 30px;
+    }
+    button{
+        border-radius: 30px;
+    }
+    
+    @media screen and (max-width:500px) {
+        .selection{
+        display: block;
+    }
+    .from,.to{
+        margin: 12px;
+    }
+    }
+        
+    </style>
+    <script type="text/javascript">
+      function calculate(){
+
+        var input=parseInt(document.getElementById("input").value);//console.log(input);
+        var output=parseInt(document.getElementById("output").value);;//console.log(output);
+        var fromUnit=document.getElementById("lstinput").value;//console.log(fromUnit);
+        var toUnit=document.getElementById("lstoutput").value;//console.log(toUnit);
+        console.log(input);
+       //meter conversion
+       if(input==="NaN"){
+        alert("please enter the input first");
+       }
+        else if(fromUnit==="Meter"){
+
+            switch(toUnit){
+                case"KiloMeter":
+                    output=input/1000;
+                    document.getElementById("output").value=output;
+                    break;
+                case"Centimeter":
+                    output=input*100;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Meter":
+                    output=input*1;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Milimeter":
+                    output=input*1000;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Foot":
+                    output=input*3.28083;
+                    document.getElementById("output").value=output;
+                    break;
+            }
+        }
+         //kilometer conversion
+        else if(fromUnit==="KiloMeter")
+        {
+            switch(toUnit){
+                case"KiloMeter":
+                    output=input*1;
+                    console.log(output);
+                    document.getElementById("output").value=output;
+                    break;
+                case"Centimeter":
+                    output=input*100000;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Meter":
+                    output=input*1000;
+                    document.getElementById("output").value=output;
+                    break;
+                 case "Milimeter":
+                    output=input*1000000;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Foot":
+                    output=input*3280.83;
+                    document.getElementById("output").value=output;
+                    break;
+            }
+
+        }//centimeter
+        else if(fromUnit==="Centimeter"){
+            switch(toUnit){
+                case"KiloMeter":
+                    output=input*0.00001;
+                    console.log(output);
+                    document.getElementById("output").value=output;
+                    break;
+                case"Centimeter":
+                    output=input*1;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Meter":
+                    output=input*0.01;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Milimeter":
+                    output=input*10;
+                    document.getElementById("output").value=output;
+                    break;
+                case "Foot":
+                    output=input*0.0328;
+                    document.getElementById("output").value=output;
+                    break;
+            }
+        }else if(fromUnit==="Milimeter")
+        {
+            switch(toUnit){
+                case"KiloMeter":
+                    output=input*0.000001;
+                    console.log(output);
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case"Centimeter":
+                    output=input*1;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case "Meter":
+                    output=input*0.01;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case "Milimeter":
+                    output=input*1;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case "Foot":
+                    output=input*0.00328;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+            }
+
+        }else if(fromUnit==="Foot")
+        {
+            switch(toUnit){
+                case"KiloMeter":
+                    output=input*0.0003047;
+                    console.log(output);
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case"Centimeter":
+                    output=input*30.48;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case "Meter":
+                    output=input*0.3048;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+                case "Foot":
+                    output=input*1;
+                    document.getElementById("output").value=output.toFixed(5);
+                    break;
+            }
+
+        }
+        
+      }
+      
+      
+    </script>
+    
+</head>
+<body>
+    <h3 >welcome to length conversion</h3>
+    <div class="selection">
+        <div class="from">
+            <input type ="text" min="1" placeholder="From" class="form-control" id="input">
+             <select class="form-select mt-3" id="lstinput">length
+                <option>Meter</option>
+                <option>KiloMeter</option>
+                <option>Centimeter</option>
+                <option>Milimeter</option>
+                <option>Foot</option>
+                
+    
+            </select>
+        </div>
+        <div class="to">
+            <input type ="text"  placeholder="To"  readonly class="form-control" id="output">
+             <select class="form-select mt-3" id="lstoutput">length
+                <option>Meter</option>
+                <option>KiloMeter</option>
+                <option>Centimeter</option>
+                <option>Milimeter</option>
+                <option>Foot</option>
+            </select>
+        </div>
+        
+    </div>
+    <div class=" d-flex justify-content-center align-items-center">
+        <button  class="mt-5 p-3 bg-success" onclick="calculate()">calculate</button> 
+    </div>
+
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+</body>
+</html>
